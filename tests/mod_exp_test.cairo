@@ -1,6 +1,6 @@
 use core::integer::{u256_wide_mul, u512_safe_divmod_by_u256};
 use core::zeroable::NonZero;
-use sandbox::mod_exp;
+use sandbox::{mod_exp, mod_exponent_optimized};
 
 #[test]
 fn test_mul_mod_u256() {
@@ -21,9 +21,8 @@ fn test_mul_mod_u256() {
 fn test_mod_exp() {
     let a: u256 = 21888242871839275222246405745257275088548364400416034343698204186575808495617;
     let b: u256 = 218882428718392752222464745257275088696311157297823662689037894645226208583;
-    let modulus: u256 =
-        21888242871839275222246405745257275088696311157297823662689037894645226208583;
 
-    let res = mod_exp(a, b, modulus);
+    let res = mod_exponent_optimized(a, b);
     println!("res: {}", res);
 }
+
