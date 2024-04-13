@@ -1,6 +1,4 @@
-use core::integer::{u256_wide_mul, u512_safe_divmod_by_u256};
-use core::zeroable::NonZero;
-use sandbox::mod_exponent;
+use sandbox::mod_exp;
 
 #[derive(Copy, Drop)]
 struct Input {
@@ -15,7 +13,7 @@ fn test_mod_exp1() {
         b: 26859873616407055777888130878028564851092662860690821559568496789771229719829
     };
     let expected = 4957037684828371349028486368725664008193737461084841662327841118011875819652;
-    let result = mod_exponent(input.a, input.b);
+    let result = mod_exp(input.a, input.b);
     assert!(result == expected, "expected: {}, got: {}", expected, result);
 }
 #[test]
@@ -25,7 +23,7 @@ fn test_mod_exp2() {
         b: 111428508365352931550624576324203418340994476305059542821500624059522255446943
     };
     let expected = 14955510965618577433222413147363295283252370408258662219190262624397440080484;
-    let result = mod_exponent(input.a, input.b);
+    let result = mod_exp(input.a, input.b);
     assert!(result == expected, "expected: {}, got: {}", expected, result);
 }
 
@@ -36,7 +34,7 @@ fn test_mod_exp3() {
         b: 35433636764249395195270674567293738806335972712693981327311940281586311300523
     };
     let expected = 18996017004566952035009481843217505117235028394386860659197855190672727117699;
-    let result = mod_exponent(input.a, input.b);
+    let result = mod_exp(input.a, input.b);
     assert!(result == expected, "expected: {}, got: {}", expected, result);
 }
 
@@ -47,7 +45,7 @@ fn test_mod_exp4() {
         b: 23871971065522574357553439901048733015293143682056318050369423778891598371820
     };
     let expected = 3360566660006660975310328994886964743084178979045029462799534000492932041695;
-    let result = mod_exponent(input.a, input.b);
+    let result = mod_exp(input.a, input.b);
     assert!(result == expected, "expected: {}, got: {}", expected, result);
 }
 
@@ -58,11 +56,11 @@ fn test_mod_exp5() {
         b: 64190350430070396769712823371732768000054576721173858953801641447924819750451
     };
     let expected = 10964846867464593098788738764887769235104271241272529621706708198270829442320;
-    let result = mod_exponent(input.a, input.b);
+    let result = mod_exp(input.a, input.b);
     assert!(result == expected, "expected: {}, got: {}", expected, result);
 }
 
 #[test]
 fn test_mod_exp6(a: u256, b: u256) {
-    mod_exponent(a, b);
+    mod_exp(a, b);
 }
